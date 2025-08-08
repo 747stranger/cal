@@ -3,13 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>투자 백분율 계산기</title>
-  <style>
-    body { font-family: sans-serif; max-width: 500px; margin: 2em auto; }
-    label, input { display: block; margin: 10px 0; }
-    input { padding: 5px; width: 100%; }
-    button { padding: 10px; width: 100%; margin-top: 10px; }
-    .result { margin-top: 20px; font-weight: bold; }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <h2>📊 투자 백분율 계산기</h2>
@@ -27,28 +22,5 @@
 
   <div class="result" id="resultArea"></div>
 
-  <script>
-    function calculate() {
-      const buy = parseFloat(document.getElementById('buyPrice').value);
-      const sell = parseFloat(document.getElementById('sellPrice').value);
-      const amount = parseFloat(document.getElementById('amount').value);
-      const result = document.getElementById('resultArea');
-
-      if (isNaN(buy) || isNaN(sell) || isNaN(amount)) {
-        result.innerHTML = "⚠️ 모든 값을 입력해 주세요.";
-        return;
-      }
-
-      const profitPerUnit = sell - buy;
-      const totalProfit = profitPerUnit * amount;
-      const returnRate = ((sell - buy) / buy) * 100;
-
-      result.innerHTML = `
-        ✔️ 단위당 수익: ${profitPerUnit.toLocaleString()}원<br>
-        ✔️ 총 수익: ${totalProfit.toLocaleString()}원<br>
-        ✔️ 수익률: ${returnRate.toFixed(2)}%
-      `;
-    }
-  </script>
 </body>
 </html>
