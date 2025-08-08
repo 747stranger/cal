@@ -1,59 +1,65 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <title>투자 백분율 계산기</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="클린한 퍼센트 계산기">
+    <meta property="og:description" content="사용하기 편한 퍼센트 계산기">
+    <meta property="og:url" content="https://747stranger.github.io/cal/">
+    <meta property="og:type" content="website">
+    <title>투자 백분율 계산기</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
-  <h2>📊 투자 백분율 계산기</h2>
+    <h2>📊 주식 가격의 변화를 계산하세요!</h2>
 
-  <!-- 기존 수익률 계산기 -->
-  <section>
-    <h3>수익률 계산</h3>
-    <label for="buyPrice">매수가 (원)</label>
-    <input type="number" id="buyPrice" placeholder="예: 10000">
+    <!-- 기존 수익률 계산기 -->
+    <section>
+        <h3>수익률 계산</h3>
+        <label for="buyPrice">매수가 (원)</label>
+        <input type="number" id="buyPrice" placeholder="예: 10000">
 
-    <label for="sellPrice">매도가 (원)</label>
-    <input type="number" id="sellPrice" placeholder="예: 12000">
+        <label for="sellPrice">매도가 (원)</label>
+        <input type="number" id="sellPrice" placeholder="예: 12000">
 
-    <label for="amount">수량</label>
-    <input type="number" id="amount" placeholder="예: 10">
+        <label for="amount">수량</label>
+        <input type="number" id="amount" placeholder="예: 10">
 
-    <button onclick="calculateProfit()">수익률 계산</button>
-    <div class="result" id="resultProfit"></div>
-  </section>
+        <button onclick="calculateProfit()">수익률 계산</button>
+        <div class="result" id="resultProfit"></div>
+    </section>
 
-  <!-- 증가/감소율 계산기 -->
-  <section>
-    <h3>퍼센트 변화 계산</h3>
-    <label for="originalValue">원래 값</label>
-    <input type="number" id="originalValue" placeholder="예: 211">
+    <!-- 증가/감소율 계산기 -->
+    <section>
+        <h3>퍼센트 변화 계산</h3>
+        <label for="originalValue">원래 값</label>
+        <input type="number" id="originalValue" placeholder="예: 211">
 
-    <label for="changedValue">변경된 값</label>
-    <input type="number" id="changedValue" placeholder="예: 215">
+        <label for="changedValue">변경된 값</label>
+        <input type="number" id="changedValue" placeholder="예: 215">
 
-    <button onclick="calculateChange()">증감 퍼센트 계산</button>
-    <div class="result" id="resultChange"></div>
-  </section>
+        <button onclick="calculateChange()">증감 퍼센트 계산</button>
+        <div class="result" id="resultChange"></div>
+    </section>
 
-<!-- 퍼센트 증감 계산기 (드롭다운 버전) -->
-<section>
-  <h3>퍼센트 증감 결과 계산</h3>
+    <!-- 퍼센트 증감 계산기 (드롭다운 버전) -->
+    <section>
+        <h3>퍼센트 증감 결과 계산</h3>
 
-  <label for="baseValue">기준 금액</label>
-  <input type="number" id="baseValue" placeholder="예: 211">
+        <label for="baseValue">기준 금액</label>
+        <input type="number" id="baseValue" placeholder="예: 211">
 
-  <label for="percentChange">변화 퍼센트 (%)</label>
-  <input type="number" id="percentChange" placeholder="예: 5">
+        <label for="percentChange">변화 퍼센트 (%)</label>
+        <input type="number" id="percentChange" placeholder="예: 5">
 
-  <label for="changeType">변화 유형</label>
-  <select id="changeType">
-    <option value="increase">증가</option>
-    <option value="decrease">감소</option>
-  </select>
+        <label for="changeType">변화 유형</label>
+        <select id="changeType">
+            <option value="increase">증가</option>
+            <option value="decrease">감소</option>
+        </select>
 
-  <button onclick="calculateAdjustedAmount()">계산하기</button>
-  <div class="result" id="resultAdjustedAmount"></div>
-</section>
+        <button onclick="calculateAdjustedAmount()">계산하기</button>
+        <div class="result" id="resultAdjustedAmount"></div>
+    </section>
