@@ -38,17 +38,18 @@
     <div class="result" id="resultChange"></div>
   </section>
 
-  <!-- 몇 퍼센트는 얼마 계산기 -->
-  <section>
-    <h3>퍼센트 값 계산</h3>
-    <label for="baseValue">기준 금액</label>
-    <input type="number" id="baseValue" placeholder="예: 211">
+<!-- 기준 금액 퍼센트 증가/감소 계산기 -->
+<section>
+  <h3>퍼센트 증감 결과 계산</h3>
+  <label for="baseValue">기준 금액</label>
+  <input type="number" id="baseValue" placeholder="예: 211">
 
-    <label for="percentValue">퍼센트 (%)</label>
-    <input type="number" id="percentValue" placeholder="예: 5">
+  <label for="percentChange">변화 퍼센트 (%)</label>
+  <input type="number" id="percentChange" placeholder="예: 5">
 
-    <button onclick="calculatePercentAmount()">값 계산</button>
-    <div class="result" id="resultPercentAmount"></div>
-  </section>
+  <button onclick="calculateAdjustedAmount()">증감된 금액 계산</button>
+  <div class="result" id="resultAdjustedAmount"></div>
+</section>
+
 </body>
 </html>

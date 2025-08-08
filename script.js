@@ -38,17 +38,22 @@ function calculateChange() {
   result.innerHTML = `✔️ ${direction}율: ${rate.toFixed(2)}%`;
 }
 
-// 특정 퍼센트 값 계산
-function calculatePercentAmount() {
+// 기준 금액 퍼센트 증가/감소 계산
+function calculateAdjustedAmount() {
   const base = parseFloat(document.getElementById('baseValue').value);
-  const percent = parseFloat(document.getElementById('percentValue').value);
-  const result = document.getElementById('resultPercentAmount');
+  const percent = parseFloat(document.getElementById('percentChange').value);
+  const result = document.getElementById('resultAdjustedAmount');
 
   if (isNaN(base) || isNaN(percent)) {
     result.innerHTML = "⚠️ 모든 값을 입력해 주세요.";
     return;
   }
 
-  const amount = base * (percent / 100);
-  result.innerHTML = `✔️ ${percent}% 는 ${amount.toLocaleString()}원`;
+  const increased = base * (1 + percent / 100);
+  const decreased = base * (1 - percent / 100);
+
+  result.innerHTML = `
+    ✔️ ${percent}% 증가: ${increased.toFixed(2).toLocaleString()}원<br>
+    ✔️ ${percent}% 감소: ${decreased.toFixed(2).toLocaleString()}원
+  `;
 }
