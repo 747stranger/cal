@@ -9,18 +9,46 @@
 <body>
   <h2>📊 투자 백분율 계산기</h2>
 
-  <label for="buyPrice">매수가 (원)</label>
-  <input type="number" id="buyPrice" placeholder="예: 10000">
+  <!-- 기존 수익률 계산기 -->
+  <section>
+    <h3>수익률 계산</h3>
+    <label for="buyPrice">매수가 (원)</label>
+    <input type="number" id="buyPrice" placeholder="예: 10000">
 
-  <label for="sellPrice">매도가 (원)</label>
-  <input type="number" id="sellPrice" placeholder="예: 12000">
+    <label for="sellPrice">매도가 (원)</label>
+    <input type="number" id="sellPrice" placeholder="예: 12000">
 
-  <label for="amount">수량</label>
-  <input type="number" id="amount" placeholder="예: 10">
+    <label for="amount">수량</label>
+    <input type="number" id="amount" placeholder="예: 10">
 
-  <button onclick="calculate()">계산하기</button>
+    <button onclick="calculateProfit()">수익률 계산</button>
+    <div class="result" id="resultProfit"></div>
+  </section>
 
-  <div class="result" id="resultArea"></div>
+  <!-- 증가/감소율 계산기 -->
+  <section>
+    <h3>퍼센트 변화 계산</h3>
+    <label for="originalValue">원래 값</label>
+    <input type="number" id="originalValue" placeholder="예: 211">
 
+    <label for="changedValue">변경된 값</label>
+    <input type="number" id="changedValue" placeholder="예: 215">
+
+    <button onclick="calculateChange()">증감 퍼센트 계산</button>
+    <div class="result" id="resultChange"></div>
+  </section>
+
+  <!-- 몇 퍼센트는 얼마 계산기 -->
+  <section>
+    <h3>퍼센트 값 계산</h3>
+    <label for="baseValue">기준 금액</label>
+    <input type="number" id="baseValue" placeholder="예: 211">
+
+    <label for="percentValue">퍼센트 (%)</label>
+    <input type="number" id="percentValue" placeholder="예: 5">
+
+    <button onclick="calculatePercentAmount()">값 계산</button>
+    <div class="result" id="resultPercentAmount"></div>
+  </section>
 </body>
 </html>
