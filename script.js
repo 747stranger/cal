@@ -15,8 +15,8 @@ function calculateProfit() {
   const returnRate = ((sell - buy) / buy) * 100;
 
   result.innerHTML = `
-    ✔️ 단위당 수익: ${profitPerUnit.toLocaleString()}원<br>
-    ✔️ 총 수익: ${totalProfit.toLocaleString()}원<br>
+    ✔️ 단위당 수익: ${profitPerUnit.toLocaleString()}<br>
+    ✔️ 총 수익: ${totalProfit.toLocaleString()}<br>
     ✔️ 수익률: ${returnRate.toFixed(2)}%
   `;
 }
@@ -38,10 +38,11 @@ function calculateChange() {
   result.innerHTML = `✔️ ${direction}율: ${rate.toFixed(2)}%`;
 }
 
-// 기준 금액 퍼센트 증가/감소 계산
+// 퍼센트 증감 계산
 function calculateAdjustedAmount() {
   const base = parseFloat(document.getElementById('baseValue').value);
   const percent = parseFloat(document.getElementById('percentChange').value);
+  const changeType = document.getElementById('changeType').value;
   const result = document.getElementById('resultAdjustedAmount');
 
   if (isNaN(base) || isNaN(percent)) {
@@ -49,11 +50,18 @@ function calculateAdjustedAmount() {
     return;
   }
 
-  const increased = base * (1 + percent / 100);
-  const decreased = base * (1 - percent / 100);
+  let changedAmount, direction, difference;
 
-  result.innerHTML = `
-    ✔️ ${percent}% 증가: ${increased.toFixed(2).toLocaleString()}원<br>
-    ✔️ ${percent}% 감소: ${decreased.toFixed(2).toLocaleString()}원
-  `;
+  if (changeType === "increase") {
+    changedAmount = base * (1 + percent / 100);
+    difference = changedAmount - base;
+    direction = "증가";
+  } else {
+    changedAmount = base * (1 - percent / 100);
+    difference = base - changedAmount;
+    direction = "감소";
+  }
+
+  result.innerHTML = `✔️ ${percent}% ${direction}한 값: <strong>${changedAmount.toFixed(2).toLocaleString()}</strong><br>
+                      (${direction}된 금액: <strong>${difference.toFixed(2).toLocaleString()}</strong>)`;
 }
