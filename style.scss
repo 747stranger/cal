@@ -1,42 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;900&family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Sans+KR:wght@100..900&family=Orbit&display=swap');
+
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
 body {
-  font-family: sans-serif;
-  max-width: 500px;
-  margin: 2em auto;
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: "Gothic A1", "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  line-height: 1.5;
 }
 
-label, input {
+/* Tokens */
+:root{
+  --border: #000;
+  --ink: #000;
+  --ink-2: #555;
+  --card-bg: #fff;
+  --radius: 0px;
+  --gap: 16px;
+  --gap-lg: 24px;
+}
+
+/* ---------- Layout ---------- */
+.page-header, .page-footer {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 28px);
+  letter-spacing: -0.2px;
+}
+
+.subtitle { margin: 6px 0 0; color: var(--ink-2); font-size: 14px; }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 8px 16px 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-lg);
+}
+
+/* ≥ 720px : 2열, ≥ 1080px : 3열 */
+@media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1080px){ .grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+/* ---------- Card (wireframe) ---------- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* ---------- Form ---------- */
+label {
   display: block;
-  margin: 10px 0 5px;
+  margin: 12px 0 6px;
+  font-size: 13px;
+  color: var(--ink-2);
 }
 
-input {
-  padding: 5px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-button {
-  padding: 10px;
-  width: 100%;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.result {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-section {
-  margin-bottom: 30px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
+input[type="text"],
 select {
-  padding: 5px;
   width: 100%;
-  margin-top: 5px;
-  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  outline: none;
+}
+
+input::placeholder { color: #989898; }
+select { cursor: pointer; }
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 1px;
+}
+
+/* 퍼센트 + 증가/감소 가로 배치(중간 이상 화면) */
+.inline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  margin-top: 8px;
+}
+@media (min-width: 560px) {
+  .inline {
+    grid-template-columns: 2fr 1.1fr;
+    align-items: end;
+  }
+}
+.field label { margin-top: 0; }
+
+/* ---------- Button ---------- */
+.btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--ink);
+  border-radius: var(--radius);
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.btn:hover { background: #000; color: #fff; }
+
+/* ---------- Result ---------- */
+.result {
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: "Nanum Gothic Coding", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 15px;
+  background: #fff;
+}
+
+/* Footer line */
+.page-footer {
+  border-top: 1px dashed var(--border);
+  max-width: 1080px;
+  margin: 0 auto; 
+}
+.page-footer p {
+  font-size: 0.8em;
 }

@@ -1,77 +1,96 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta property="og:title" content="클린한 퍼센트 계산기">
-    <meta property="og:description" content="사용하기 편한 퍼센트 계산기">
-    <meta property="og:url" content="https://747stranger.github.io/cal">
-    <meta property="og:image" content="https://747stranger.github.io/cal/images/thumbnail.jpg">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>투자 백분율 계산기</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FMZGRC5KDR"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta property="og:title" content="클린한 퍼센트 계산기" />
+  <meta property="og:description" content="사용하기 편한 퍼센트 계산기" />
+  <meta property="og:url" content="https://747stranger.github.io/cal" />
+  <meta property="og:image" content="https://747stranger.github.io/cal/images/thumbnail.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        gtag('config', 'G-FMZGRC5KDR');
-    </script>
+  <title>투자 백분율 계산기</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FMZGRC5KDR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FMZGRC5KDR');
+  </script>
 </head>
 
 <body>
-    <h2>📊 주식 가격의 변화를 계산하세요!</h2>
+  <header class="page-header">
+    <h1>퍼센트 계산기</h1>
+  </header>
 
-    <!-- 기존 수익률 계산기 -->
-    <section>
-        <h3>수익률 계산</h3>
+  <main class="container">
+    <div class="grid">
+      <!-- 수익률 계산 -->
+      <section class="card">
+        <h2>수익률 계산</h2>
+
         <label for="buyPrice">매수가</label>
-        <input type="number" id="buyPrice" placeholder="매수한 가격. 예: 211">
+        <input type="text" id="buyPrice" placeholder="매수한 가격. 예: 211" oninput="formatNumberInput(this)" />
 
         <label for="sellPrice">매도가</label>
-        <input type="number" id="sellPrice" placeholder="매도할 가격. 예: 215">
+        <input type="text" id="sellPrice" placeholder="매도할 가격. 예: 215" oninput="formatNumberInput(this)" />
 
         <label for="amount">수량</label>
-        <input type="number" id="amount" placeholder="예: 10">
+        <input type="text" id="amount" placeholder="예: 10" oninput="formatNumberInput(this)" />
 
-        <button onclick="calculateProfit()">수익률(%) 계산</button>
-        <div class="result" id="resultProfit"></div>
-    </section>
+        <button class="btn" onclick="calculateProfit()">수익률(%) 계산</button>
+        <div class="result" id="resultProfit" aria-live="polite"></div>
+      </section>
 
-    <!-- 증가/감소율 계산기 -->
-    <section>
-        <h3>퍼센트 변화 계산</h3>
+      <!-- 증가/감소율 계산 -->
+      <section class="card">
+        <h2>퍼센트 변화 계산</h2>
+
         <label for="originalValue">원래 값</label>
-        <input type="number" id="originalValue" placeholder="예: 211">
+        <input type="text" id="originalValue" placeholder="예: 211" oninput="formatNumberInput(this)" />
 
         <label for="changedValue">변경된 값</label>
-        <input type="number" id="changedValue" placeholder="예: 215">
+        <input type="text" id="changedValue" placeholder="예: 215" oninput="formatNumberInput(this)" />
 
-        <button onclick="calculateChange()">증감 퍼센트 계산</button>
-        <div class="result" id="resultChange"></div>
-    </section>
+        <button class="btn" onclick="calculateChange()">증감 퍼센트 계산</button>
+        <div class="result" id="resultChange" aria-live="polite"></div>
+      </section>
 
-    <!-- 퍼센트 증감 계산기 (드롭다운 버전) -->
-    <section>
-        <h3>퍼센트 증감 결과 계산</h3>
+      <!-- 퍼센트 증감 결과 -->
+      <section class="card">
+        <h2>퍼센트 증감 결과 계산</h2>
 
         <label for="baseValue">기준 금액</label>
-        <input type="number" id="baseValue" placeholder="예: 211">
+        <input type="text" id="baseValue" placeholder="예: 211" oninput="formatNumberInput(this)" />
 
-        <label for="percentChange">변화 퍼센트 (%)</label>
-        <input type="number" id="percentChange" placeholder="예: 3">
+        <div class="inline">
+          <div class="field">
+            <label for="percentChange">변화 퍼센트 (%)</label>
+            <input type="text" id="percentChange" placeholder="예: 3" oninput="formatNumberInput(this)" />
+          </div>
+          <div class="field">
+            <label for="changeType">증가/감소</label>
+            <select id="changeType">
+              <option value="increase">증가</option>
+              <option value="decrease">감소</option>
+            </select>
+          </div>
+        </div>
 
-        <label for="changeType">증가/감소 선택</label>
-        <select id="changeType">
-            <option value="increase">증가</option>
-            <option value="decrease">감소</option>
-        </select>
+        <button class="btn" onclick="calculateAdjustedAmount()">계산하기</button>
+        <div class="result" id="resultAdjustedAmount" aria-live="polite"></div>
+      </section>
+    </div>
+  </main>
 
-        <button onclick="calculateAdjustedAmount()">계산하기</button>
-        <div class="result" id="resultAdjustedAmount"></div>
-    </section>
-
-<p>© 2025 Chickpea. All rights reserved.</p>
+  <footer class="page-footer">
+    <p>© 2025 Chickpea. All rights reserved.</p>
+  </footer>
+</body>
+</html>
