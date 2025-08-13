@@ -1,19 +1,30 @@
-// 입력값에 천단위 쉼표 적용
+// 입력값에 천단위 쉼표 적용 (소수점 허용)
 function formatNumberInput(el) {
-  const raw = el.value.replace(/,/g, '');
-  if (raw === '' || isNaN(raw)) {
-    el.value = '';
-    return;
+  let value = el.value.replace(/,/g, ''); // 기존 쉼표 제거
+  // 숫자와 소수점만 허용 (소수점은 하나만)
+  value = value.replace(/[^0-9.]/g, '');
+  const parts = value.split('.');
+  if (parts.length > 2) {
+    // 소수점이 2개 이상이면 뒤쪽 소수점 제거
+    value = parts[0] + '.' + parts.slice(1).join('');
   }
-  el.value = Number(raw).toLocaleString();
+
+  if (value.includes('.')) {
+    // 정수 부분만 쉼표 처리
+    const intPart = parts[0] ? Number(parts[0]).toLocaleString() : '';
+    const decimalPart = parts[1] ?? '';
+    el.value = intPart + '.' + decimalPart;
+  } else {
+    el.value = value ? Number(value).toLocaleString() : '';
+  }
 }
 
-// 쉼표 제거 후 숫자로 파싱
+// 쉼표 제거 후 숫자로 변환
 function parseNumber(val) {
-  if (val == null) return NaN;
-  const raw = String(val).replace(/,/g, '');
-  return parseFloat(raw);
+  if (!val) return NaN;
+  return parseFloat(val.replace(/,/g, ''));
 }
+
 
 /* === 수익률 계산 === */
 function calculateProfit() {
