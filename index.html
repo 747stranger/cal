@@ -36,13 +36,13 @@
         <h2>수익률 계산</h2>
 
         <label for="buyPrice">매수가</label>
-        <input type="text" id="buyPrice" placeholder="매수한 가격. 예: 211" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="buyPrice" placeholder="매수한 가격. 예: 211" oninput="formatNumberInput(this)" />
 
         <label for="sellPrice">매도가</label>
-        <input type="text" id="sellPrice" placeholder="매도할 가격. 예: 215" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="sellPrice" placeholder="매도할 가격. 예: 215" oninput="formatNumberInput(this)" />
 
         <label for="amount">수량</label>
-        <input type="text" id="amount" placeholder="예: 10" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="amount" placeholder="예: 10" oninput="formatNumberInput(this)" />
 
         <button class="btn" onclick="calculateProfit()">수익률(%) 계산</button>
         <div class="result" id="resultProfit" aria-live="polite"></div>
@@ -53,10 +53,10 @@
         <h2>퍼센트 변화 계산</h2>
 
         <label for="originalValue">원래 값</label>
-        <input type="text" id="originalValue" placeholder="예: 211" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="originalValue" placeholder="예: 211" oninput="formatNumberInput(this)" />
 
         <label for="changedValue">변경된 값</label>
-        <input type="text" id="changedValue" placeholder="예: 215" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="changedValue" placeholder="예: 215" oninput="formatNumberInput(this)" />
 
         <button class="btn" onclick="calculateChange()">증감 퍼센트 계산</button>
         <div class="result" id="resultChange" aria-live="polite"></div>
@@ -67,12 +67,12 @@
         <h2>퍼센트 증감 결과 계산</h2>
 
         <label for="baseValue">기준 금액</label>
-        <input type="text" id="baseValue" placeholder="예: 211" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="baseValue" placeholder="예: 211" oninput="formatNumberInput(this)" />
 
         <div class="inline">
           <div class="field">
             <label for="percentChange">변화 퍼센트 (%)</label>
-            <input type="text" id="percentChange" placeholder="예: 3" oninput="formatNumberInput(this)" />
+            <input type="text" inputmode="decimal" id="percentChange" placeholder="예: 3" oninput="formatNumberInput(this)" />
           </div>
           <div class="field">
             <label for="changeType">증가/감소</label>
