@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta property="og:title" content="클린한 퍼센트 계산기" />
@@ -18,7 +19,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FMZGRC5KDR"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-FMZGRC5KDR');
   </script>
@@ -36,10 +37,12 @@
         <h2>수익률 계산</h2>
 
         <label for="buyPrice">매수가</label>
-        <input type="text" inputmode="decimal" id="buyPrice" placeholder="매수한 가격. 예: 211" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="buyPrice" placeholder="매수한 가격. 예: 211"
+          oninput="formatNumberInput(this)" />
 
         <label for="sellPrice">매도가</label>
-        <input type="text" inputmode="decimal" id="sellPrice" placeholder="매도할 가격. 예: 215" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="sellPrice" placeholder="매도할 가격. 예: 215"
+          oninput="formatNumberInput(this)" />
 
         <label for="amount">수량</label>
         <input type="text" inputmode="decimal" id="amount" placeholder="예: 10" oninput="formatNumberInput(this)" />
@@ -53,10 +56,12 @@
         <h2>퍼센트 변화 계산</h2>
 
         <label for="originalValue">원래 값</label>
-        <input type="text" inputmode="decimal" id="originalValue" placeholder="예: 211" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="originalValue" placeholder="예: 211"
+          oninput="formatNumberInput(this)" />
 
         <label for="changedValue">변경된 값</label>
-        <input type="text" inputmode="decimal" id="changedValue" placeholder="예: 215" oninput="formatNumberInput(this)" />
+        <input type="text" inputmode="decimal" id="changedValue" placeholder="예: 215"
+          oninput="formatNumberInput(this)" />
 
         <button class="btn" onclick="calculateChange()">증감 퍼센트 계산</button>
         <div class="result" id="resultChange" aria-live="polite"></div>
@@ -72,7 +77,8 @@
         <div class="inline">
           <div class="field">
             <label for="percentChange">변화 퍼센트 (%)</label>
-            <input type="text" inputmode="decimal" id="percentChange" placeholder="예: 3" oninput="formatNumberInput(this)" />
+            <input type="text" inputmode="decimal" id="percentChange" placeholder="예: 3"
+              oninput="formatNumberInput(this)" />
           </div>
           <div class="field">
             <label for="changeType">증가/감소</label>
@@ -86,6 +92,30 @@
         <button class="btn" onclick="calculateAdjustedAmount()">계산하기</button>
         <div class="result" id="resultAdjustedAmount" aria-live="polite"></div>
       </section>
+      
+      <!-- 물타기(평단 조정) 계산기 -->
+      <section class="card">
+        <h2>물타기 계산 (평균 매수 단가<sup>평단</sup> 조정)</h2>
+
+        <label for="dcaCurrentPrice">현재 가격</label>
+        <input type="text" id="dcaCurrentPrice" placeholder="예: 125.6500" inputmode="decimal"
+          oninput="formatNumberInput(this)" />
+
+        <label for="dcaAvgPrice">현재 평단</label>
+        <input type="text" id="dcaAvgPrice" placeholder="예: 188.5900" inputmode="decimal"
+          oninput="formatNumberInput(this)" />
+
+        <label for="dcaQty">보유 수량</label>
+        <input type="text" id="dcaQty" placeholder="예: 10" inputmode="decimal" oninput="formatNumberInput(this)" />
+
+        <label for="dcaTargetAvg">목표 평단</label>
+        <input type="text" id="dcaTargetAvg" placeholder="예: 165.9400" inputmode="decimal"
+          oninput="formatNumberInput(this)" />
+
+        <button class="btn" onclick="calculateDCA()">필요 금액/수량 계산</button>
+        <div class="result" id="dcaResult" aria-live="polite"></div>
+      </section>
+
     </div>
   </main>
 
@@ -93,4 +123,5 @@
     <p>© 2025 Chickpea. All rights reserved.</p>
   </footer>
 </body>
+
 </html>

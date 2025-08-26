@@ -183,4 +183,9 @@ button:focus-visible {
 
 .page-footer p {
   font-size: 0.8em;
+}
+
+sup {
+  font-size: 0.55em;
+  vertical-align: auto;
 }/*# sourceMappingURL=style.css.map */
