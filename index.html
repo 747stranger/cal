@@ -92,7 +92,24 @@
         <button class="btn" onclick="calculateAdjustedAmount()">계산하기</button>
         <div class="result" id="resultAdjustedAmount" aria-live="polite"></div>
       </section>
-      
+
+
+      <!-- 비중만 보기 -->
+      <section class="card">
+        <h2>퍼센트에 해당하는 금액만 계산</h2>
+
+        <label for="percentBase">기준 금액 (예: 100달러의)</label>
+        <input type="text" id="percentBase" placeholder="예: 100" inputmode="decimal"
+          oninput="formatNumberInput(this)" />
+
+        <label for="percentRate">퍼센트 (%) (예: 30%는)</label>
+        <input type="text" id="percentRate" placeholder="예: 30" inputmode="decimal" oninput="formatNumberInput(this)" />
+
+        <button class="btn" onclick="calculatePercentValue()">얼마인지 계산하기</button>
+        <div class="result" id="percentResult" aria-live="polite"></div>
+      </section>
+
+
       <!-- 물타기(평단 조정) 계산기 -->
       <section class="card">
         <h2>물타기 계산 (평균 매수 단가<sup>평단</sup> 조정)</h2>
@@ -115,6 +132,8 @@
         <button class="btn" onclick="calculateDCA()">필요 금액/수량 계산</button>
         <div class="result" id="dcaResult" aria-live="polite"></div>
       </section>
+
+
 
     </div>
   </main>

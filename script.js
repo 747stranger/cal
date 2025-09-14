@@ -101,6 +101,27 @@ function calculateAdjustedAmount() {
     `(${label}된 금액: <strong>${difference.toLocaleString()}</strong>)`;
 }
 
+
+
+/* === 비중만 보기 === */
+function calculatePercentValue() {
+  const base = parseNumber(document.getElementById('percentBase').value);
+  const rate = parseNumber(document.getElementById('percentRate').value);
+  const result = document.getElementById('percentResult');
+
+  if (isNaN(base) || isNaN(rate)) {
+    result.innerHTML = "⚠️ 기준 금액과 퍼센트를 입력해 주세요.";
+    return;
+  }
+
+  const value = (base * rate) / 100;
+
+  result.innerHTML =
+    `✔️ <strong>${value.toLocaleString(undefined, { maximumFractionDigits: 4 })}</strong>`;
+}
+
+
+
 /* === 물타기(평단 조정) 계산 ===
 유의:
    - 평단 낮추기: 목표평단 < 현재평단 이어야 하며, 현재가 < 목표평단이어야 함.
@@ -166,3 +187,4 @@ function calculateDCA() {
     `✔️ 정수 주로 매수 시: <strong>${xWhole.toLocaleString()}</strong> 개 (약 <strong>${dollarsWhole.toLocaleString(undefined, { maximumFractionDigits: 4 })}</strong> 달러)<br>` +
     `↳ 정수 주 기준 예상 평단: <strong>${newAvgWithWhole.toLocaleString(undefined, { maximumFractionDigits: 4 })}</strong>`;
 }
+
