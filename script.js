@@ -188,3 +188,40 @@ function calculateDCA() {
     `↳ 정수 주 기준 예상 평단: <strong>${newAvgWithWhole.toLocaleString(undefined, { maximumFractionDigits: 4 })}</strong>`;
 }
 
+
+
+
+/* === 환율 변환 계산 === */
+function calculateFX() {
+  const rate = parseNumber(document.getElementById('fxRate').value);    // 환율
+  const amount = parseNumber(document.getElementById('fxAmount').value); // 금액
+  const direction = document.getElementById('fxDirection').value;
+  const result = document.getElementById('fxResult');
+
+  if (isNaN(rate) || isNaN(amount) || rate <= 0) {
+    result.innerHTML = "⚠️ 환율과 금액을 올바르게 입력해 주세요.";
+    return;
+  }
+
+  let converted, text;
+  if (direction === "usdToKrw") {
+    converted = amount * rate;
+    text = `${amount.toLocaleString(undefined, { maximumFractionDigits: 4 })} 달러 = <strong>${converted.toLocaleString(undefined, { maximumFractionDigits: 4 })} 원</strong>`;
+  } else {
+    converted = amount / rate;
+    text = `${amount.toLocaleString(undefined, { maximumFractionDigits: 4 })} 원 = <strong>${converted.toLocaleString(undefined, { maximumFractionDigits: 4 })} 달러</strong>`;
+  }
+
+  result.innerHTML = "✔️ " + text;
+}
+// 환율 라벨 업데이트
+function updateFxLabel() {
+  const direction = document.getElementById('fxDirection').value;
+  const fxRateLabel = document.getElementById('fxRateLabel');
+
+  if (direction === "usdToKrw") {
+    fxRateLabel.textContent = "환율 (1달러 = ? 원)";
+  } else {
+    fxRateLabel.textContent = "환율 (1원 = ? 달러)";
+  }
+}
