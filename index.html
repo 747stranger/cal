@@ -137,25 +137,23 @@
       <section class="card">
         <h2>환율 변환 계산</h2>
 
-<label for="fxRate" id="fxRateLabel">환율 (1달러 = ? 원)</label>
-<input type="text" id="fxRate" placeholder="예: 1400"
-       inputmode="decimal" oninput="formatNumberInput(this)" />
+        <label for="fxRate" id="fxRateLabel">환율 (1달러 = ? 원)</label>
+        <input type="text" id="fxRate" placeholder="예: 1400" inputmode="decimal" oninput="formatNumberInput(this)" />
 
-<label for="fxAmount">금액</label>
-<input type="text" id="fxAmount" placeholder="예: 100000"
-       inputmode="decimal" oninput="formatNumberInput(this)" />
+        <label for="fxAmount">금액</label>
+        <input type="text" id="fxAmount" placeholder="예: 100000" inputmode="decimal"
+          oninput="formatNumberInput(this)" />
 
-<label for="fxDirection">변환 방향</label>
-<select id="fxDirection" onchange="updateFxLabel()">
-  <option value="usdToKrw">달러 → 원</option>
-  <option value="krwToUsd">원 → 달러</option>
-</select>
+        <label for="fxDirection">변환 방향</label>
+        <select id="fxDirection" onchange="updateFxLabel()">
+          <option value="krwToUsd">원 → 달러</option>
 
+          <option value="usdToKrw">달러 → 원</option>
+        </select>
 
         <button class="btn" onclick="calculateFX()">계산하기</button>
         <div class="result" id="fxResult" aria-live="polite"></div>
       </section>
-
 
     </div>
   </main>
